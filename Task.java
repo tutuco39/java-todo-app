@@ -14,13 +14,13 @@ public class Task {
   }
 
   //　完了状態を取得
-  public boolean inDone() {
+  public boolean isDone() {
     return done;
   }
 
   //完了状態を変更
-  public void setDone(boolean done) {
-    this.done = done;
+  public void toggleDone() {
+    this.done = !this.done;
   }
 
   //　表示用（デバックや一覧表示に便利）
