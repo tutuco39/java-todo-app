@@ -14,7 +14,12 @@ public class TaskManager {
     }
   }
 
-  public void removeTasks(int index) {
+  public void toggleDone(int index) {
+    Task task = tasks.get(index);
+    task.toggleDone();
+  }
+
+  public void removeTask(int index) {
     tasks.remove(index);
   }
 }
