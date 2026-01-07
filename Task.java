@@ -20,10 +20,10 @@ public class Task {
 
   //完了状態を変更
   public void toggleDone() {
-    this.done = !this.done;
+    done = !done;
   }
 
-  //　表示用（デバックや一覧表示に便利）
+  //　表示用（一覧表示）
   @Override
   public String toString() {
     return (done ? "[x]" : "[ ]") + title;

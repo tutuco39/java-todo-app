@@ -5,47 +5,49 @@ public class Main {
 
     TaskManager manager = new TaskManager();
     Scanner scanner = new Scanner(System.in);
+    CliView view = new CliView();
 
-    System.out.println("===== Todo アプリ =====");
+    // System.out.println("===== Todo アプリ =====");
 
     while (true) {
-      System.out.println("\nコマンドを入力してください");
-      System.out.println("1: 追加, 2: 一覧, 3: 完了切替, 4: 削除, 0: 終了");
-      System.out.println("> ");
-
+      view.showMenu();
       String input = scanner.nextLine();
+
+      // System.out.println("\nコマンドを入力してください");
 
       switch(input) {
         case "1":
-          System.out.println("タスク名: ");
+          view.showMessage("タスク名を入力してください");
           String title = scanner.nextLine();
-          manager.addTask(new Task(title));
-          System.out.println("追加しました！");
+          manager.addTask(title);
+          view.showMessage("追加しました！");
           break;
 
         case "2":
-          manager.showTasks();
+          view.showTasks(manager.getTasks());
           break;
 
         case "3":
-          System.out.println("切り替える番号: ");
+          view.showMessage("切り替える番号: ");
           int toggleIndex = Integer.parseInt(scanner.nextLine());
           manager.toggleDone(toggleIndex);
+          view.showMessage("切り替えました。");
           break;
 
         case "4":
-          System.out.println("削除する番号: ");
+          view.showMessage("削除する番号: ");
           int deleteIndex = Integer.parseInt(scanner.nextLine());
           manager.removeTask(deleteIndex);
+          view.showMessage("削除しました。");
           break;
 
         case "0":
-          System.out.println("終了します");
+          view.showMessage("終了します");
           scanner.close();
           return;
 
         default:
-          System.out.println("不正なコマンドです");
+          view.showMessage("不正なコマンドです");
       }
     }
   }
